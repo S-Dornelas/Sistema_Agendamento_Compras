@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <h1 class="display-4">Lista de Compras</h1>
 
 <div class="mb-3">
@@ -46,24 +48,47 @@
 </div>
 
 <div class="mb-3">
-    <button type="button" onclick="gerarPDF()" class="btn btn-primary">PDF</button>
+    <button type="button" onclick="gerarDocumento()" class="btn btn-primary">Gerar Relatório</button>
 </div>
 
 <script>
-    
-    function gerarPDF() {
-        let resposta = confirm("Você deseja gerar um PDF?");
-
-        if (resposta) {
-            let alterarPdf = confirm("Deseja alterar valores da planilha Compras?");
-
-            if (alterarPdf) {
-                location.href = '?page=comprar-editar';
+    function gerarDocumento() {
+        Swal.fire({
+            title: 'Você deseja gerar um Relatório?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deseja gerar em PDF ou Excel?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'PDF',
+                    cancelButtonText: 'Excel'
+                }).then((relatorio) => {
+                    if (relatorio.isConfirmed) {
+                        Swal.fire({
+                            title: 'Deseja alterar valores da planilha Compras temporariamente?',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Sim',
+                            cancelButtonText: 'Não'
+                        }).then((alterarPdf) => {
+                            if (alterarPdf.isConfirmed) {
+                                location.href = '?page=comprar-editar';
+                            } else {
+                                location.href = 'pdf-compras.php';
+                            }
+                        });
+                    } else {
+                        location.href = 'xls-compras.php';
+                    }
+                });
             } else {
-                location.href = 'pdf-compras.php';
+                alert("Relatório não gerado.");
             }
-        } else {
-            alert("PDF não gerado.");
-        }
+        });
     }
 </script>
