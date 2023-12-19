@@ -1,6 +1,6 @@
 # Sistema de Controle de Medicamentos
 
-O Sistema de Controle de Medicamentos é uma aplicação desenvolvida em PHP que permite gerenciar o estoque de medicamentos, realizar o registro de entradas de compras, controlar as datas de utilização e de compras, além de possibilitar a geração de relatórios em formato PDF. O sistema foi construído utilizando o banco de dados MySQL para armazenamento de dados, o framework ezPDF para a geração de documentos em PDF e o dotProject para gerenciamento de projetos.
+O Sistema de Controle de Medicamentos é uma aplicação desenvolvida em PHP que permite gerenciar o estoque de medicamentos, realizar o registro de entradas de compras, controlar as datas de utilização e de compras, além de possibilitar a geração de relatórios em formato PDF e XML. O sistema foi construído utilizando o banco de dados MySQL para armazenamento de dados, o framework ezPDF para a geração de documentos em PDF e XML, bem como o dotProject para gerenciamento de projetos.
 
 ## Funcionalidades
 
