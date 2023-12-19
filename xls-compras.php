@@ -12,14 +12,14 @@ function calcularTotal(array $data)
     foreach ($data as &$linha) {
         $porcentagem = ($totalValores != 0) ? ($linha['Valor'] / $totalValores) * 100 : 0;
         $linha['Porcentagem'] = number_format($porcentagem, 2) . '%';
-        $linha['Valor'] = number_format($linha['Valor'], 2); 
+        $linha['Valor'] = number_format($linha['Valor'], 2, ',', '.'); 
     }
 
     $linhaTotal = array(
         'Fornecedor' => 'Total: ',
         'Produto' => ' ',
         'Quantidade Comprada' => $totalQuantidade,
-        'Valor' => number_format($totalValores, 2),
+        'Valor' => '=SOMA(D2:D'.(count($data)+1).')',
         'UltimaCompra' => ' ',
         'Porcentagem' => '100%',
     );
