@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -11,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Agenda</a>
+            <a class="navbar-brand" href="login.php">Agenda</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,6 +71,10 @@
         </div>
     </nav>
 
+    <form action="logout.php" method="post">
+        <input type="submit" value="Logout">
+    </form>
+
     <div class="container">
         <div class="row">
             <div class="col mt-5">
@@ -96,7 +110,7 @@
                         break;
                     case "salvar-consumo":
                         include("consumo/salvar-consumo.php");
-                        break;                    
+                        break;
                     case "fornecedor-novo":
                         include("fornecedor/fornecedor-novo.php");
                         break;
@@ -128,6 +142,8 @@
             </div>
         </div>
     </div>
+    
+    <?php include("rodape.php"); ?>
 
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
